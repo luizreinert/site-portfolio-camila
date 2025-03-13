@@ -1,0 +1,332 @@
+@import '../../constants/constants.css';
+
+.portfolio{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    z-index: 2;
+    background-color: #f7eee4;
+    width: 100%;
+    overflow-x: clip;
+}
+
+
+.portfolio::before{
+    display: block;
+    position: absolute;
+    top: 80px;
+    left: -400px;
+    opacity: 0.7;
+    z-index: -1;
+    content: url('../../assets/images/background-assets/portfolio-bg-line-3.png');
+}
+
+.portfolio::after{
+    display: block;
+    position: absolute;
+    top: 340px;
+    left: 1450px;
+    transform: scaleX(-1);
+    opacity: 0.7;
+    z-index: -1;
+    content: url('../../assets/images/background-assets/portfolio-bg-line-1.png');
+}
+
+
+.portfolio-mosaic-container{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.mobile-photocard-wrapper{
+    justify-content: center;
+}
+
+.photo-card{
+    display: flex;
+    grid-template-rows: 1fr auto;
+    opacity: 0;
+    z-index: 3;
+    border-radius: 25px;  
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    overflow: hidden;
+}
+
+.photo-card-m {
+    filter: blur(1.5px);
+    transition: filter 0.6s;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 60svh;
+    object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+}
+
+
+.swiper-slide-active .photo-card-m{
+    filter: blur(0px);
+    pointer-events: all;
+}
+
+.photo-infos{
+    margin: 15px 0px;
+    overflow: hidden;
+}
+
+.swiper-slide-active .photo-infos h1, 
+.swiper-slide-active .photo-infos span{
+    transform: translateY(0);
+}
+
+.photo-infos h1{
+    transform: translateY(-60px);
+    transition: all 0.35s;
+    margin-bottom: 5px;
+    color: var(--secondary-color);
+    font-weight: 500;
+    font-size: 1.5rem;
+    font-family: "Montserrat", sans-serif;
+    user-select: none;
+    text-transform: uppercase;
+}
+
+.photo-infos span{
+    display: inline-block;
+    transform: translateY(-60px);
+    transition: all 0.5s;
+    color: rgba(0, 0, 0, 0.733);
+    user-select: none;
+    text-transform: uppercase;
+}
+
+.photo-card-showed{
+    opacity: 1;
+}
+
+.porfolio-photocards-hidden{
+    opacity: 0;
+}
+
+.porfolio-photocards-shown{
+    animation: index-portfolio-photocards-shown 1s forwards;
+}
+
+@keyframes index-portfolio-photocards-shown{
+    from{ transform: translateY(30px);opacity: 0;}
+	to{ transform: translateY(0px);opacity: 1;}
+}
+
+.photo-card:hover .photo-overlay{
+    transform: translateY(0px);
+    visibility: visible;
+    opacity: 1;
+    background-color: #d1ad98c9;
+}
+
+.last-home-slide{
+    vertical-align: top;
+    background-color: transparent;
+}
+
+.last-photo-card{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    width: 100%;
+    pointer-events: none;
+    color: white;
+    user-select: none;
+    text-align: center;
+}
+
+.last-photo-card::after{
+    display: block;
+    position: absolute;
+    opacity: 0;
+    z-index: 0;
+    transition: opacity 3s;
+    background-color: #75492c;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    content: "";
+}
+
+.last-photo-card-text{
+    position: relative;
+    align-content: center;
+    opacity: 0;
+    z-index: 10;
+    transition: all 1.5s;
+    width: 80%;
+    pointer-events: none;
+    color: white;
+    user-select: none;
+    text-align: center;
+}
+
+.swiper-slide-active .last-photo-card::after {
+    opacity: 0.7;
+}
+
+.swiper-slide-active .last-photo-card{
+    pointer-events: all;
+}
+
+.swiper-slide-active .last-photo-card-text{
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.portfolio-btn-wrapper{
+    display: flex;
+    justify-content: end;
+    margin-top: 0px;
+    width: 100%;
+}
+
+.portfolio-btn-wrapper a{
+    display: flex;
+    transition: all 0.6s;
+    margin-right: 20%;
+    border-radius: 10px;
+    background-color: transparent;
+    padding: 10px 20px;
+    width: fit-content;
+    color: var(--secondary-bg);
+    font-weight: 600;
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
+
+.portfolio-btn-wrapper a:hover{
+    background-color: transparent;
+    color: var(--secondary-color);
+}
+
+.portfolio-btn-wrapper span{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    margin-left: 10px;
+    font-size: 1.5em;
+}
+
+
+.transition{
+    animation: change 0.5s forwards;
+}
+
+@keyframes change{
+    from{opacity: 1;}
+    to{opacity: 0;}
+}
+
+
+@media (max-width: 992px){
+    .portfolio{
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        justify-items: center;
+        z-index: 2;
+        background-color: #f7eee4;
+        padding-bottom: 50px;
+    }
+
+    .portfolio::before{
+        top: -50px;
+        left: -500px;
+        opacity: 0.5;
+    }
+
+    .portfolio::after{
+        top: 60px;
+        left: -100px;
+        opacity: 0.5;
+    }
+
+    .portfolio-main-container{
+        display: grid;
+        row-gap: 30px;
+    }
+
+    .portfolio-mosaic-container .photo-card:nth-child(1){
+        grid-row: auto;
+        grid-column: auto;
+    }
+
+    .portfolio-mosaic-container .photo-card:nth-child(4){
+        grid-column:auto ;
+    }
+
+    .portfolio-mosaic-container .photo-card:nth-child(2){
+        grid-column: auto ;
+    }
+
+    .porfolio-photocards-shown{
+        animation: index-portfolio-photocards-shown 2s forwards;
+    }
+
+    .portfolio-mosaic-container{
+        display: flex;
+        justify-content: center;
+        padding: 20px 0px 00px 0px;
+        width: 100%;
+    }
+
+    .homepage-portfolio-swiper{
+        width: 80%!important;
+        overflow: visible!important;
+    }
+
+    .mobile-photocard-wrapper{
+        align-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .photo-card-m{   
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width:100%;
+        min-height: 60vh;
+    }
+
+    .photo-infos{
+        margin: 15px 0px;
+    }
+
+    .photo-infos h1{
+        margin-bottom: 5px;
+        color: var(--secondary-color);
+        font-weight: 500;
+        font-size: 1.2rem;
+        font-family: "Montserrat", sans-serif;
+        text-transform: uppercase;
+    }
+
+    .photo-infos span{
+        color: rgba(0, 0, 0, 0.733);
+        text-transform: uppercase;
+    }
+
+    .portfolio-btn-wrapper a {
+        margin: 0px;
+        font-size: 1em;
+    }
+
+}
+

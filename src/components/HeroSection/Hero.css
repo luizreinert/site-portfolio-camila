@@ -1,0 +1,591 @@
+@import '../../constants/constants.css';
+
+.hero-section{
+    position: relative;
+    z-index: 1000;
+    background-color: #f7eee4;
+    width: 100%;
+    height: 100svh;
+    overflow: hidden;
+    overflow-x: hidden;
+}
+
+.hero-transition-container{
+    display: none;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    background-color: var(--secondary-color);
+    width: 100%;
+    height: 100svh;
+    pointer-events: none;
+}
+
+.hero-section.first-enter .hero-transition-container{
+    display: grid;
+    animation: first-enter-hero-color 1s 2s forwards;
+}
+
+@keyframes first-enter-hero-color{
+    from{
+        background-color: var(--secondary-color);
+    }
+    to{
+        background-color: #f7eee4;
+    }
+
+}
+
+@keyframes logo-animation-end{
+    0% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(400px);
+        visibility: hidden; 
+        opacity: 0;
+    }
+}
+
+.logo-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    justify-self: center;
+    animation: logo-animation-end 1s 1.8s ease-in-out forwards ;
+    width: 240px;
+    overflow: hidden;
+}
+
+.logo-wrap img {
+    animation: breathing 1.5s ease-in-out 4;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes breathing {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes pointer-events-delay{
+    from{
+        pointer-events: none;
+    }
+
+    to{
+        pointer-events: all;
+    }
+}
+
+.hero-main-container{
+    position: absolute;
+    top: 0;
+    z-index: 100;
+    animation: pointer-events-delay 1s forwards;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.hero-section.first-enter .hero-main-container{
+    animation: pointer-events-delay 0s 2.5s forwards;
+}
+
+@keyframes opacity-animation{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.hero-main-image-wrapper{
+    justify-self: center;
+    order: 1;
+    opacity: 1;
+    z-index: 1000;
+    animation: opacity-animation 2s forwards;
+    background-position: 50% 40%;
+    background-size: cover;
+    width: 100%;
+    height: 60%;
+}
+
+.hero-section.first-enter .hero-main-image-wrapper{
+    opacity: 0;
+    animation: opacity-animation 2s 2.3s forwards cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    width: 100%;
+    height: 60%;
+}
+
+.hero-section.scroll-up-triggered .hero-main-image-wrapper{
+    animation: hero-main-image-scroll-up 1s forwards cubic-bezier(0.46, 0.03, 0.52, 0.96);
+}
+
+.hero-section.scroll-down-triggered .hero-main-image-wrapper{
+    animation: hero-main-image-scroll-down 1s forwards cubic-bezier(0.46, 0.03, 0.52, 0.96);
+
+}
+
+@keyframes hero-main-image-scroll-down{
+    from{
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to{
+        transform: translateY(-500px);
+        opacity: 1;
+    }
+}
+
+@keyframes hero-main-image-scroll-up{
+    from{
+        transform: translateY(-500px);
+        opacity: 1;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.hero-heading{
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr 1fr;
+    justify-self: center;
+    opacity: 1;
+    animation: opacity-animation 1s forwards ease-in-out;
+    background-color: #f7eee4 ;
+    width: 100%;
+    min-height: 40%;
+}
+
+.hero-section.first-enter .hero-heading{
+    opacity: 0;
+    animation: opacity-animation 2s 2.3s forwards cubic-bezier(0.46, 0.03, 0.52, 0.96);
+}
+
+.hero-section.scroll-up-triggered .hero-heading{
+    opacity: 1;
+    animation: hero-heading-scroll-up 1s forwards cubic-bezier(0.46, 0.03, 0.52, 0.96);
+}
+
+.hero-section.scroll-down-triggered .hero-heading{
+    opacity: 1;
+    animation:  hero-heading-scroll-down 1s forwards cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    background-position: 100% 100%;
+}
+
+@keyframes hero-heading-scroll-up{
+    from{
+        transform: translateY(-60%);
+        height: 100%;
+    }
+    to{
+        height: 40%;
+    }
+}
+
+@keyframes hero-heading-scroll-down{
+    from{
+        height: 40%;
+    }
+    to{
+        transform: translateY(-60%);
+        height: 100%;
+    }
+}
+
+
+.hero-title-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 5%;
+    height: 100%;
+}
+
+.hero-title-wrapper img{
+    width: 450px;
+}
+
+.hero-title{
+    overflow-y: hidden;
+}
+
+
+@keyframes hero-title-shown{
+    from{
+        transform: translateY(700px);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+
+.hero-section.first-enter .hero-title-wrapper img{
+    opacity: 0;
+    animation: title-first-enter 1s 2.8s forwards ease-in-out;
+}
+
+@keyframes title-first-enter{
+    from{
+        transform: translateY(400px);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0px);
+        opacity: 1;}
+}
+ 
+.hero-section.scroll-down-triggered .hero-title-wrapper img{
+    animation: title-scroll-down 0.5s forwards ease-in-out;
+}
+
+.hero-section.scroll-up-triggered .hero-title-wrapper img{
+    transform: translateY(400px);
+    animation: title-scroll-up 1s forwards ease-in-out;
+}
+
+@keyframes title-scroll-up{
+    from{
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes title-scroll-down{
+    from{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    to{
+        transform: translateY(100px);
+        opacity: 0;
+    }
+}
+
+.hero-subtitle-wrapper{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    align-self: center;
+    justify-self: center;
+    opacity: 0;
+    animation: opacity-animation 1s forwards;
+    width: 80%;
+    height: 80%;
+}
+
+.hero-subtitle-motto{
+    grid-row: 2;
+    justify-self: center;
+    opacity: 0;
+    animation: opacity-animation 1s forwards;
+    width: 80%;
+}
+
+.hero-section.hero-section.first-enter .hero-subtitle-motto{
+    animation-delay: 3.3s;
+}
+
+.hero-subtitle-motto h1, .hero-subtitle-motto span{
+    color: black;
+    font-weight: 300;
+    font-size: 1.9rem!important;
+    font-family: "Montserrat";
+}
+
+.hero-subtitle-motto span{
+    position: relative;
+    width: fit-content;
+    color: #976446;
+}
+
+@keyframes mulheres-underline-load-anim{
+    from{width: 1px;}
+    to{ opacity: 1;width: 100%;}
+}
+
+.hero-subtitle-motto span::after{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 10;
+    animation: mulheres-underline-load-anim 2s 0.6s cubic-bezier(0.4, 0, 0, 1.05) forwards;
+    background-color: var(--secondary-bg);
+    height: 2px;
+    content: '';
+}
+
+.hero-section.hero-section.first-enter .hero-subtitle-motto span::after{
+    animation-delay: 3.6s;
+}
+
+.scrolldown-btn-wrapper{
+    display: flex;
+    grid-row: 3;
+    overflow: hidden;
+}
+
+.scrolldown-btn-wrapper button{
+    position: relative;
+    align-self: flex-end;
+    transition: all 0.5s;
+    border: none;
+    background-color: transparent;
+    padding: 0px;
+    width: 100%;
+    font-weight: 500;
+    font-size: 1.2em;
+    font-family: "Montserrat";
+    text-align: start;
+    text-transform: uppercase;
+
+}
+
+.hero-section.first-enter .scrolldown-btn-wrapper button{
+    opacity: 0;
+    animation: opacity-animation 1s 3.3s forwards;
+}
+
+.hero-section.scroll-down-triggered .scrolldown-btn-wrapper button{
+    animation: scrolldown-btn-scroll-down 1s forwards;
+}
+
+.hero-section.scroll-up-triggered .scrolldown-btn-wrapper button{
+    transform: translateX(1000px);
+    animation: scrolldown-btn-scroll-up 0.6s 0.4s forwards;
+}
+
+@keyframes scrolldown-btn-scroll-down{
+    from{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+    to{
+        transform: translateX(1000px);
+        opacity: 0;
+    }
+}
+
+@keyframes scrolldown-btn-scroll-up{
+    from{
+        transform: translateX(1000px);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+
+@keyframes scrolldown-line-animation{
+    from{
+        width: 1px;
+    }
+    to{
+        width: 70%;
+    }
+}
+
+.scrolldown-btn-wrapper button::after{
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    animation: scrolldown-line-animation 2s 0.6s forwards;
+    transition: all 0.5s;
+    margin: auto 10px;
+    background-color: black;
+    width: 1px;
+    height: 2px;
+    content: "";
+}
+
+.hero-section.first-enter .scrolldown-btn-wrapper button::after{
+    animation-delay: 3.6s;
+    width: 1px;
+}
+
+.scrolldown-btn-wrapper button:hover{
+    color: var(--secondary-color);
+}
+
+.scrolldown-btn-wrapper button:hover::after{
+    background-color: var(--secondary-color);
+}
+
+@media (max-width: 1300px){
+    
+    .hero-title-wrapper img{
+        width: 400px;
+    }
+}
+
+@media (max-width: 992px){
+    .hero-section{
+        display: grid;
+        flex-direction: column;
+        padding-bottom: 0px;
+        height: fit-content;
+    }
+
+    .hero-section-left-container img{
+        object-fit: contain;
+    }
+
+    .hero-section-left{
+        display: flex;
+        order: 2;
+        background-color: var(--primary-bg);
+        height: fit-content;
+    }
+
+    .hero-section-mobile{
+        display: flex;
+        justify-content: center;
+        background-color: transparent;
+        width: 100vw;
+    }
+
+    @keyframes arrow-btn-animation{
+        10%{
+            transform: translateY(-10px);
+        }
+        20%{
+            transform: translateY(5px);
+        }
+        40%{
+            transform: translateY(0px);
+        }
+        100%{
+            transform: translateY(0px);
+        }
+    }
+
+    .hero-section-button-mobile{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+        justify-self: center;
+        animation: hero-heading-load-anim 2s forwards;
+        margin-top: 50px;
+        border: 2px solid var(--secondary-color);
+        border-color: white;
+        border-radius: 50%;
+        background-color: transparent;
+        width: 60px;
+        height: 60px;
+        color: var(--secondary-color);
+        color: white;
+    }
+
+    .hero-section-button-mobile ion-icon{
+        animation: arrow-btn-animation 3s infinite;
+        font-size: 40px;
+        line-height: 40px;
+    }
+    
+    .picture-frame{
+        display: flex;
+        grid-template-rows: 7fr 1fr;
+        justify-content: center;
+        animation: load-blur-anim 1.5s forwards;
+        border-radius: 0;
+        background-image: linear-gradient( rgba(0, 0, 0, 0.753), rgba(255, 255, 255, 0) ),  url('../../assets/images/images-camila/camila5.webp') ;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100svh;
+    }
+
+    @keyframes load-blur-anim{
+        from{filter: blur(10px)}
+        to{filter: blur(0px)}
+    }
+
+    .hero-heading{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-self: flex-end;
+        opacity: 1;
+        animation: none;
+        background: transparent;
+        padding: 0px;
+        width: 80vw;
+        height: 65vh;
+    }
+
+    .hero-heading h1{
+        position: relative;
+        right: 10px;
+        animation: hero-heading-load-anim 2s forwards;
+        background-color: transparent;
+        color: white;
+        font-weight: 400;
+        font-size: 2em;
+        line-height: 1.5em;
+        font-family: 'Montserrat';
+        letter-spacing: 2px;
+    }
+
+    @keyframes hero-heading-load-anim {
+        from{ transform: translateY(20px);opacity: 0;}
+        to{ transform: translateY(0px);opacity: 1;}
+    }
+
+    .hero-heading span{
+        display: inline-block;
+        margin: 0px;
+        font-weight: 500;
+        font-size: 2rem;
+    }
+
+    .hero-heading span::after{
+        display: flex;
+        position: absolute;
+        opacity: 0;
+        z-index: 100;
+        animation: mulheres-underline-load-anim 1s 0.9s forwards;
+        background-color: var(--secondary-color);
+        width: 30px;
+        height: 3px;
+        content: '';
+    }
+
+    @keyframes mulheres-underline-load-anim {
+        from{width: 1px; }
+        to{ opacity: 1;width: 170px;}
+    }
+    
+}

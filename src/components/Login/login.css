@@ -1,0 +1,201 @@
+@import '../../constants/constants.css';
+  
+  :root {
+    --input-bg: #ffffff;
+    --input-border: #e8d5c9;
+    --input-focus: #b97c58;
+    --error-color: #d35d47;
+    --success-color: #68a678;
+    --hover-shadow: rgba(117, 73, 44, 0.1);
+    --card-shadow: rgba(155, 70, 45, 0.15);
+  }
+  
+  .login {
+    background: linear-gradient(135deg, var(--secondary-bg), var(--secondary-color));
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .login-container {
+    background: var(--primary-bg);
+    padding: 3.5rem;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px var(--card-shadow);
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  
+    & .login-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+  
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background: var(--break-line-color);
+        border-radius: 2px;
+      }
+  
+      & h1 {
+        color: var(--secondary-bg);
+        font-size: 2.25rem;
+        font-weight: 800;
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.5px;
+      }
+    }
+  
+    & .input-form-group {
+      margin-bottom: 2rem;
+      position: relative;
+  
+      & label {
+        display: block;
+        margin-bottom: 0.75rem;
+        color: var(--secondary-bg);
+        font-size: 1rem;
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+  
+      & .login-input-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+  
+        & svg {
+          position: absolute;
+          left: 16px;
+          color: var(--secondary-color);
+          transition: color 0.3s ease;
+        }
+  
+        & input {
+          width: 100%;
+          padding: 1rem 1rem 1rem 3rem;
+          border: 2px solid var(--input-border);
+          border-radius: 14px;
+          font-size: 1.05rem;
+          transition: all 0.3s ease;
+          background: var(--input-bg);
+          color: black;
+  
+          &::placeholder {
+            color: var(--break-line-color);
+          }
+  
+          &:focus {
+            outline: none;
+            border-color: var(--input-focus);
+            box-shadow: 0 0 0 4px rgba(185, 124, 88, 0.15);
+  
+            & + svg {
+              color: var(--input-focus);
+            }
+          }
+        }
+      }
+    }
+  
+    & .login-button {
+      width: 100%;
+      padding: 1.125rem;
+      background: linear-gradient(to right, var(--secondary-bg), var(--third-bg));
+      color: var(--primary-bg);
+      border: none;
+      border-radius: 14px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+  
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 150%;
+        height: 150%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+        transform: translate(-50%, -50%) scale(0);
+        border-radius: 50%;
+        transition: transform 0.75s ease-out;
+      }
+  
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px var(--hover-shadow);
+      }
+  
+      &:active::after {
+        transform: translate(-50%, -50%) scale(2);
+      }
+    }
+  
+    & .error-message {
+      background: rgba(211, 93, 71, 0.1);
+      color: var(--error-color);
+      font-size: 0.925rem;
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+      border: 1px solid rgba(211, 93, 71, 0.2);
+  
+      & svg {
+        margin-right: 12px;
+        flex-shrink: 0;
+      }
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-4px); }
+    40% { transform: translateX(4px); }
+    60% { transform: translateX(-2px); }
+    80% { transform: translateX(2px); }
+  }
+  
+  @media (max-width: 480px) {
+    .login-container {
+      padding: 2.5rem 2rem;
+  
+      & .login-header h1 {
+        font-size: 2rem;
+      }
+  
+      & .form-group input {
+        font-size: 1rem;
+        padding: 0.875rem 1rem 0.875rem 2.75rem;
+      }
+    }
+  }

@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --primary-bg: #f7f0ec;
+    --secondary-color: #C0825F;
+    --primary-text: #c0925b;
+    --break-line-color: #D1AD98;
+    --secondary-bg: #75492c;
+    --third-bg: #9b462d;
+}
