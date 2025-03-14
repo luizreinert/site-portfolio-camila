@@ -43,7 +43,7 @@ $ npm start
 
 - RESTful API with structured endpoints for data management
 
-- CRUD operations for portfolio content and client messages
+- CRUD operations for portfolio content.
 
 - User authentication & admin panel 
 
