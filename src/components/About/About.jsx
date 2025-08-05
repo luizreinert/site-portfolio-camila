@@ -141,8 +141,8 @@ const About = () => {
           </div>
           <div ref={insightsRef} className={`insights-container ${insightsInView ? 'insights-container-shown' : insightsObserver ? 'insights-container-showed': ''}`}>
               <div className='insight'>
-                <span className='insight-number'>+ 200</span>
-                <span className='insight-text'>Ensaios <br /> realizados</span>
+                <span className='insight-number'>+ 300</span>
+                <span className='insight-text'>Dias especiais <br /> registrados</span>
               </div>
               <div className='insight'>
               <span className='insight-number'>+ 4</span>
